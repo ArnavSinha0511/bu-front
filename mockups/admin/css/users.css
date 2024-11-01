@@ -1,0 +1,25 @@
+html {
+    /* Colors */
+    --c-green: #68b436;
+    --c-green-light: #6cc25b;
+    --c-orange: #ef7f1a;
+    --c-orange-light: #f29542;
+    --c-purple: #a8518a;
+    --c-blue: #008dd2;
+    --c-magenta: #ea0f81;
+  
+    --c-heading-w: #f5f5f5;
+    --c-heading-b: #242424;
+  
+    --c-para-w: #f1f1f1;
+    --c-para-b: #363636;
+  
+    /* Typography */
+    --para-font1: "Corbel", sans-serif;
+    --para-font2: "Bebas Neue", sans-serif;
+    --heading-font1: "Coolvetica", sans-serif;
+    --heading-font2: "Night Zone", serif;
+  
+    color-scheme: light;
+    /* background-color: var(--c-green); */
+  }
