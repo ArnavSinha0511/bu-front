@@ -1,3 +1,4 @@
+// Fetch user data from API
 async function fetchUsers() {
   try {
     const res = await fetch(
@@ -13,6 +14,7 @@ async function fetchUsers() {
   }
 }
 
+// displaying the table body w data
 function displayUsers(users) {
   const userTable = document.getElementById("user-list");
 
@@ -43,3 +45,56 @@ function formatDate(isoString) {
 
 // Call fetchUsers
 fetchUsers();
+
+let columnHeaders = document.querySelectorAll("th")
+
+// Loop through each header and add event listener
+for(let i = 0; i < columnHeaders.length-1; i++) {
+  columnHeaders[i].addEventListener('click', headerClick);
+}
+
+function headerClick() {
+  const column = this;
+  let order = this.dataset.order;
+  console.log(column.textContent); //logs the header title
+  console.log('click to', order);
+
+  // switch asc/desc
+  if(order == "desc"){
+    this.dataset.order = "asc";
+  }else{
+    this.dataset.order = "desc";
+  }
+  
+  const arrow = column.querySelector('.icon-arrow');
+  arrow.classList.toggle('down');
+
+  sortColumn(column, column.dataset.order);
+}
+
+function sortColumn(column, order){
+  const rows = Array.from(document.querySelectorAll("tbody tr"));
+  const columnIndex = Array.from(column.parentElement.children).indexOf(column);
+
+  rows.sort((rowA, rowB) => {
+    const cellA = rowA.cells[columnIndex].textContent; 
+    const cellB = rowB.cells[columnIndex].textContent; 
+    
+    const a = isNaN(cellA) ? cellA : parseFloat(cellA);
+    const b = isNaN(cellB) ? cellB : parseFloat(cellB);
+
+    if (order == 'asc') {
+      return a > b ? 1 : (a < b ? -1 : 0);
+    } else {
+      return a < b ? 1 : (a > b ? -1 : 0); 
+    }
+  });
+
+   // rebuild the table with the sorted rows
+   const tbody = document.getElementById("user-list");
+
+   // append rows in sorted order
+   for(let i = 0; i < rows.length; i++) {
+    tbody.appendChild(rows[i]);
+} 
+}

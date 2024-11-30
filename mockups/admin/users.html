@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/users.css">
     <title>User Admin Panel</title>
+
+
 </head>
 <body>
     <div id="user-table">
@@ -12,21 +16,22 @@
         <table>
             <thead>
                 <tr>
-                    <th>Username</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Favorites</th>
-                    <th>Last Login</th>
-                    <th>Created At</th>
+                    <th data-column="username" data-order="desc">Username <span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="name" data-order="desc">Name <span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="email" data-order="desc">Email <span class="icon-arrow">&uarr;</span</th>
+                    <th data-column="role" data-order="desc">Role <span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="favorites" data-order="desc">Favorites<span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="last_login" data-order="desc">Last Login<span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="created_at" data-order="desc">Created At<span class="icon-arrow">&uarr;</span></th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="user-list"></tbody>
+            <!-- Table body generated JS/data -->
         </table>
     </div>
 
     <!-- Link js -->
-    <script src="C:\Personal\bu-front\mockups\admin\script\users.js"></script>
+    <script src="./script/users.js"></script>
 </body>
 </html>
