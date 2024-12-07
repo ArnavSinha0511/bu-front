@@ -29,10 +29,9 @@ html {
   .icon-arrow {
     font-size: 16px;
     display: inline-block; 
-
   }
   .icon-arrow.down {
-    transform: rotate(180deg); /* Rotate the arrow by 180 degrees */
+    transform: rotate(180deg); /* rotate the arrow */
   }
   
  
