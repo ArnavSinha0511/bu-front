@@ -297,7 +297,7 @@ filterSelect();
 function pagination(){
   let numRows = document.getElementById("pagination");
 
-  numRows.addEventListener("change", function(){
+  numRows.addEventListener("click", function(){
     console.log(numRows.value);
 
     let perPage = parseInt(numRows.value); 
