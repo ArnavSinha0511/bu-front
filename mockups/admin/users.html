@@ -1,15 +1,83 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="./css/users.css">
     <title>User Admin Panel</title>
+    <style>
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            right:50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 1000;
+        }
 
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
 
+        .modal input {
+            display: block;
+            margin: 10px 0;
+            width: 95%;
+            padding: 8px;
+        }
+
+        .modal button {
+            margin-right: 10px;
+        }
+
+        .modal-delete-content {
+            text-align: center;
+        }
+
+        .modal-delete-content h3 {
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
+    <div id="user-table">
+        <div id="filter-select">
+            <label>Hide: </label>
+            <label><input type="checkbox" class="filter">Username</label>
+            <label><input type="checkbox" class="filter">Name</label>
+            <label><input type="checkbox" class="filter">Email</label>
+            <label><input type="checkbox" class="filter">Role</label>
+            <label><input type="checkbox" class="filter">Favorites</label>
+            <label><input type="checkbox" class="filter">Last Login</label>
+            <label><input type="checkbox" class="filter">Created At</label><br>
+        </div>
+
+        <label>Rows per page:</label>
+        <select id="pagination">
+            <option>10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="150">150</option>
+        </select><br>
+
     <div id="user-table">
         <button id="add-user-btn">Add New User</button>
         <input type="text" id="search" placeholder="Search by username">
@@ -18,20 +86,42 @@
                 <tr>
                     <th data-column="username" data-order="desc">Username <span class="icon-arrow">&uarr;</span></th>
                     <th data-column="name" data-order="desc">Name <span class="icon-arrow">&uarr;</span></th>
-                    <th data-column="email" data-order="desc">Email <span class="icon-arrow">&uarr;</span</th>
+                    <th data-column="email" data-order="desc">Email <span class="icon-arrow">&uarr;</span></th>
                     <th data-column="role" data-order="desc">Role <span class="icon-arrow">&uarr;</span></th>
-                    <th data-column="favorites" data-order="desc">Favorites<span class="icon-arrow">&uarr;</span></th>
-                    <th data-column="last_login" data-order="desc">Last Login<span class="icon-arrow">&uarr;</span></th>
-                    <th data-column="created_at" data-order="desc">Created At<span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="favorites" data-order="desc">Favorites <span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="last_login" data-order="desc">Last Login <span class="icon-arrow">&uarr;</span></th>
+                    <th data-column="created_at" data-order="desc">Created At <span class="icon-arrow">&uarr;</span></th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody id="user-list"></tbody>
-            <!-- Table body generated JS/data -->
         </table>
     </div>
 
-    <!-- Link js -->
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modal-overlay"></div>
+
+    <!-- Edit/Add Modal -->
+    <div class="modal" id="modal">
+        <h3 id="modal-title">Add User</h3>
+        <input type="text" id="modal-username" placeholder="Username">
+        <input type="text" id="modal-name" placeholder="Name">
+        <input type="email" id="modal-email" placeholder="Email">
+        <input type="text" id="modal-role" placeholder="Role">
+        <input type="text" id="modal-favourites" placeholder="Favorites">
+        <button id="save-btn">Save</button>
+        <button id="cancel-btn">Cancel</button>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="delete-modal">
+        <div class="modal-delete-content">
+            <h3>Are you sure you want to delete this user?</h3>
+            <button id="confirm-delete-btn">Yes</button>
+            <button id="cancel-delete-btn">Cancel</button>
+        </div>
+    </div>
+
     <script src="./script/users.js"></script>
 </body>
 </html>
