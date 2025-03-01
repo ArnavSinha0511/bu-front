@@ -46,35 +46,35 @@ function formatDate(isoString) {
   return new Date(isoString).toLocaleDateString(undefined, options);
 }
 
-// Delete user
-function deleteUser(index) {
-  if (confirm("Are you sure you want to delete this user?")) {
-    usersData.splice(index, 1); // Remove the user from the array
-    displayUsers(usersData); // Re-render the table
-  }
-}
+// // Delete user
+// function deleteUser(index) {
+//   if (confirm("Are you sure you want to delete this user?")) {
+//     usersData.splice(index, 1); // Remove the user from the array
+//     displayUsers(usersData); // Re-render the table
+//   }
+// }
 
-// Edit user
-function editUser(index) {
-  const user = usersData[index];
+// // Edit user
+// function editUser(index) {
+//   const user = usersData[index];
 
-  const updatedUser = {
-    username: prompt("Edit Username:", user.username),
-    name: prompt("Edit Name:", user.name),
-    email: prompt("Edit Email:", user.email),
-    role: prompt("Edit Role:", user.role),
-    favourites: prompt("Edit Favourites:", user.favourites),
-    last_login: user.last_login,
-    created_at: user.created_at,
-  };
+//   const updatedUser = {
+//     username: prompt("Edit Username:", user.username),
+//     name: prompt("Edit Name:", user.name),
+//     email: prompt("Edit Email:", user.email),
+//     role: prompt("Edit Role:", user.role),
+//     favourites: prompt("Edit Favourites:", user.favourites),
+//     last_login: user.last_login,
+//     created_at: user.created_at,
+//   };
 
-  if (updatedUser.username && updatedUser.name && updatedUser.email) {
-    usersData[index] = updatedUser; // Update user in the array
-    displayUsers(usersData); // Re-render the table
-  } else {
-    alert("All fields are required to edit the user!");
-  }
-}
+//   if (updatedUser.username && updatedUser.name && updatedUser.email) {
+//     usersData[index] = updatedUser; // Update user in the array
+//     displayUsers(usersData); // Re-render the table
+//   } else {
+//     alert("All fields are required to edit the user!");
+//   }
+// }
 
 /// Sort-Select ///
 let columnHeaders = document.querySelectorAll("th")
